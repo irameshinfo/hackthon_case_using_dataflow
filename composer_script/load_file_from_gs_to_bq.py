@@ -24,12 +24,14 @@ with DAG(
         template=TEMPLATE_PATH,
         project_id=PROJECT_ID,
         location=REGION,
+        dataflow_default_options={},
         parameters={
             "javascriptTextTransformGcsPath": "gs://rameshsamplebucket/accounts_udf_trans.js",
+            "javascriptTextTransformFunctionName": "transform",
             "JSONPath": "gs://rameshsamplebucket/accounts_bq_schema.json",
             "inputFilePattern": "gs://rameshsamplebucket/Datafile_accounts.csv",
             "outputTable": "ranjanrishi-project:testdataset.account",
-            "tempLocation": "gs://ramtempbucket7"
+            "bigQueryLoadingTemporaryDirectory": "gs://ramtempbucket7"
         },
     )
 
